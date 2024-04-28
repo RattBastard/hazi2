@@ -57,6 +57,16 @@ void da_destroy(DynArray *self){
     free(self);
 }
 
+double da_avarage(const DynArray *self){
+    int sum = 0;
+    for (int i = 0; i < self->length; i++)
+    {
+        sum += self->numbers[i];
+    }
+    double avg = (1.0 * sum)/(1.0 * self->length);
+    return avg;
+}
+
 int main()
 {
     DynArray *list = da_create();
@@ -71,10 +81,7 @@ int main()
         da_append(list,atoi(bestring));
     }
 
-    for (int i = 0; i < list->length; i++)
-    {
-        printf("%d\n", list->numbers[i]);
-    }
+    printf("%lf\n",da_avarage(list));
 
     da_destroy(list);
 
